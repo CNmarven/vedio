@@ -1,4 +1,3 @@
-
 <!DOCTYPE>
 
 <html>
@@ -6,212 +5,191 @@
 <head>
 
 
+    <!--Meta tags-->
 
-	<!--Meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
+    <!--Title-->
 
-	<!--Title-->
+    <title>视频播放器</title>
 
-	<title>视频播放器</title>
 
+    <!--Stylesheets-->
 
+    <link rel="stylesheet" href="css/styles.css">
 
-	<!--Stylesheets-->
 
-	<link rel="stylesheet" href="css/styles.css">
+    <!--jQuery-->
 
+    <script src="js/jquery-1.7.2.min.js"></script>
 
 
-	<!--jQuery-->
+    <!--jPlayer-->
 
-	<script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/jquery.jplayer.min.js"></script>
 
 
+    <!--[if lt IE 9]>
 
-	<!--jPlayer-->
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
-	<script src="js/jquery.jplayer.min.js"></script>
+    <![endif]-->
 
 
+</head>
 
-        <!--[if lt IE 9]>
+<body>
 
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
-            <![endif]-->
+<!--container for everything-->
 
+<div id="jp_container_1" class="jp-video jp-video-360p">
 
 
-        </head>
+    <!--container in which our video will be played-->
 
-        <body>
+    <div id="jquery_jplayer_1" class="jp-jplayer"></div>
 
 
+    <!--main containers for our controls-->
 
-        	<!--container for everything-->
+    <div class="jp-gui">
 
-        	<div id="jp_container_1" class="jp-video jp-video-360p">
+        <div class="jp-interface">
 
+            <div class="jp-controls-holder">
 
 
-        		<!--container in which our video will be played-->
+                <!--play and pause buttons-->
 
-        		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+                <a href="javascript:;" class="jp-play" tabindex="1">play</a>
 
+                <a href="javascript:;" class="jp-pause" tabindex="1">pause</a>
 
+                <span class="separator sep-1"></span>
 
-        		<!--main containers for our controls-->
+                <!--time notifications-->
 
-        		<div class="jp-gui">
+                <div class="jp-current-time"></div>
 
-        			<div class="jp-interface">
+                <span class="time-sep">/</span>
 
-        				<div class="jp-controls-holder">
+                <div class="jp-duration"></div>
 
+                <span class="separator sep-2"></span>
 
 
-        					<!--play and pause buttons-->
+                <!--progress bar-->
 
-        					<a href="javascript:;" class="jp-play" tabindex="1">play</a>
+                <div class="jp-progress">
 
-        					<a href="javascript:;" class="jp-pause" tabindex="1">pause</a>
+                    <div class="jp-seek-bar">
 
-        					<span class="separator sep-1"></span>
+                        <div class="jp-play-bar"><span></span></div>
 
-        					<!--time notifications-->
+                    </div>
 
-        					<div class="jp-current-time"></div>
+                </div>
 
-        					<span class="time-sep">/</span>
 
-        					<div class="jp-duration"></div>
+                <!--mute / unmute toggle-->
 
-        					<span class="separator sep-2"></span>
+                <!-- <a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a>
 
+                <a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a> -->
 
 
+                <!--volume bar-->
 
-        					<!--progress bar-->
+                <!-- <div class="jp-volume-bar">
 
-        					<div class="jp-progress">
+                    <div class="jp-volume-bar-value"><span class="handle"></span></div>
 
-        						<div class="jp-seek-bar">
+                </div>
 
-        							<div class="jp-play-bar"><span></span></div>
+                <span class="separator sep-2"></span> -->
 
-        						</div>
 
-        					</div>
+                <!--full screen toggle-->
 
+                <a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a>
 
+                <a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a>
 
 
-        					<!--mute / unmute toggle-->
+            </div><!--end jp-controls-holder-->
 
-        					<!-- <a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a>
+        </div><!--end jp-interface-->
 
-        					<a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a> -->
+    </div><!--end jp-gui-->
 
 
+    <!--unsupported message-->
 
-        					<!--volume bar-->
+    <div class="jp-no-solution">
 
-        					<!-- <div class="jp-volume-bar">
+        <span>Update Required</span>
 
-        						<div class="jp-volume-bar-value"><span class="handle"></span></div>
+        Here's a message which will appear if the video isn't supported. A Flash alternative can be used here if you
+        fancy it.
 
-        					</div>
+    </div>
 
-        					<span class="separator sep-2"></span> -->
 
+</div><!--end jp_container_1-->
 
 
-        					<!--full screen toggle-->
+<!--instantiate-->
 
-        					<a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a>
+<script type="text/javascript">
 
-        					<a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a>
+    $(document).ready(function () {
 
 
+        $("#jquery_jplayer_1").jPlayer({
 
-        				</div><!--end jp-controls-holder-->
+            ready: function () {
 
-        			</div><!--end jp-interface-->
+                $(this).jPlayer("setMedia", {
 
-        		</div><!--end jp-gui-->
+                    m4v: "mi4.m4v",
 
+                    ogv: "mi4.ogv",
 
+                    webmv: "http://jq22.qiniudn.com/www.jq22.commi4.webm",
 
-        		<!--unsupported message-->
+                    poster: "mi4.png"
 
-        		<div class="jp-no-solution">
+                });
 
-        			<span>Update Required</span>
+            },
 
-        			Here's a message which will appear if the video isn't supported. A Flash alternative can be used here if you fancy it.
+            swfPath: "js",
 
-        		</div>
+            supplied: "webmv, ogv, m4v",
 
+            size: {
 
+                width: "100%",
 
-        	</div><!--end jp_container_1-->
+                height: "209px",
 
+                cssClass: "jp-video-360p"
 
+            }
 
-        	<!--instantiate-->
+        });
 
-        	<script type="text/javascript">
 
-        		$(document).ready(function(){
+    });
 
+</script>
 
 
-        			$("#jquery_jplayer_1").jPlayer({
+</body>
 
-        				ready: function () {
-
-        					$(this).jPlayer("setMedia", {
-
-        						m4v: "mi4.m4v",
-
-        						ogv: "mi4.ogv",
-
-        						webmv: "http://jq22.qiniudn.com/www.jq22.commi4.webm",
-
-        						poster: "mi4.png"
-
-        					});
-
-        				},
-
-        				swfPath: "js",
-
-        				supplied: "webmv, ogv, m4v",
-
-        				size: {
-
-        					width: "100%",
-
-        					height: "209px",
-
-        					cssClass: "jp-video-360p"
-
-        				}
-
-        			});
-
-
-
-        		});
-
-        	</script>
-
-
-
-        </body>
-
-        </html>
+</html>
 >>>>>>> origin/master
